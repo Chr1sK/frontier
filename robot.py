@@ -1,4 +1,3 @@
-from inspect import isroutine
 import os
 import re
 
