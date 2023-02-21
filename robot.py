@@ -55,7 +55,7 @@ def place(newX, newY, newHeading):
     except:
         return "Not valid place command arguments"
     
-    if (newX < 0 or newX > 4) or (newY < 0 or newY > 4) or (newHeading not in directions):
+    if (newX < 0 or newX > 4) or (newY < 0 or newY > 4) or (newHeading not in directions): #basic validations for out of bounds or invalid heading
         return "Not valid place command arguments"
     global x, y, heading, placed
     x = newX
@@ -70,7 +70,7 @@ def mainFunction():
     os.system("clear")
     while True:
         command = input("Enter Command: ")
-        if "place" not in command and placed is False:
+        if "place" not in command and placed is False: #check if first command is place
             print ("Issue valid place command first")
         elif command == "move()":
             print(move())
@@ -84,7 +84,7 @@ def mainFunction():
             pattern = re.search("[^place(]{1}[)]{1}$", command)
             if pattern:
                 try:
-                    argumentsString = command[command.index("(") + 1:-1].split(',')
+                    argumentsString = command[command.index("(") + 1:-1].split(',') #basic validations around place command arguments and syntax
                     print(place(argumentsString[0], argumentsString[1], argumentsString[2]))
                 except:
                     print("Not valid place command")
